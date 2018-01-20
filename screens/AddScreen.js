@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Button, TextInput } from 'react-native';
 
 class AddScreen extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { text: '' };
+    }
     render() {
         return (
             <View>
-                <View>
-                    <Text>AddScreen</Text>
-                    <Text>AddScreen</Text>
-                    <Text>AddScreen</Text>
-                    <Text>AddScreen</Text>
-                    <Text>AddScreen</Text>
-                </View>
+                <TextInput
+                    style={{ height: 40, borderWidth: 1 }}
+                    onChangeText={text => this.setState({ text })}
+                    value={this.state.text}
+                    autoCorrect={false}
+                />
                 <Button
                     title="Save"
                     onPress={() => {

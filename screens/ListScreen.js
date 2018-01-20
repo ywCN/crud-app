@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button, ScrollView } from 'react-native';
+import { View, Button, ScrollView } from 'react-native';
 
 const item = {
     id: 1,

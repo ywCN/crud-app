@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button, TextInput } from 'react-native';
+import { View, Button, TextInput } from 'react-native';
 
 class EditScreen extends Component {
     constructor(props) {
@@ -8,7 +8,7 @@ class EditScreen extends Component {
     }
     render() {
         return (
-            <View style={{ flex: 1 }}>
+            <View>
                 <TextInput
                     style={{ height: 40, borderWidth: 1 }}
                     onChangeText={text => this.setState({ text })}
@@ -26,6 +26,7 @@ class EditScreen extends Component {
                         title="Save"
                         onPress={() => {
                             // call action to update this item in firebase
+                            // then navigate back, 2nd argument?
                             this.props.navigation.goBack();
                         }}
                     />
