@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { Card, Button } from 'react-native-elements';
+import { View, Text, Button } from 'react-native';
 
 class AddScreen extends Component {
     render() {

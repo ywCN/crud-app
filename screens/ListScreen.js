@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
-import { Card, Button } from 'react-native-elements';
+import { View, Text, Button, ScrollView } from 'react-native';
 
 const item = {
     id: 1,
@@ -12,24 +11,17 @@ class ListScreen extends Component {
         // call action to fetch updated list of item
     }
     renderItems() {
+        // to do: map object from firebase into an array of views
         return (
-            <Card key={item.id}>
-                <Text>{item.content}</Text>
-
-                <View style={{ flexDirection: 'row' }}>
-                    <Button
-                        style={{ width: 100 }}
-                        title="Edit"
-                        onPress={() => this.props.navigation.navigate('edit')}
-                    />
-                    <Button
-                        style={{ width: 100 }}
-                        title="Delete"
-                        // call action to del item in firebase
-                        onPress={() => this.deleteItem(item.id)}
-                    />
-                </View>
-            </Card>
+            <View key={item.id}>
+                <Button
+                    title={item.content}
+                    onPress={() => {
+                        this.props.navigation.navigate('edit');
+                        // call action creator to set current editing item
+                    }}
+                />
+            </View>
         );
     }
 

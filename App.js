@@ -20,13 +20,10 @@ export default class App extends React.Component {
                 add: { screen: AddScreen },
                 view: { screen: ViewScreen },
                 edit: { screen: EditScreen }
-            },
-            {
-                navigationOptions: {
-                    tabBarVisible: false // hide tabBar
-                },
-                lazy: true // only load screen that user is currently using
             }
+            // {
+            //     lazy: true
+            // }
         );
         return (
             <Provider store={store}>
