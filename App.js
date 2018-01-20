@@ -1,21 +1,46 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { StackNavigator } from 'react-navigation';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+
+import reducers from './reducers';
+import AddScreen from './screens/AddScreen';
+import EditScreen from './screens/EditScreen';
+import ListScreen from './screens/ListScreen';
+import ViewScreen from './screens/ViewScreen';
 
 export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
-    );
-  }
+    render() {
+        const store = createStore(reducers, {}, applyMiddleware(thunk));
+        const MainNavigator = StackNavigator(
+            {
+                list: { screen: ListScreen },
+                add: { screen: AddScreen },
+                view: { screen: ViewScreen },
+                edit: { screen: EditScreen }
+            },
+            {
+                navigationOptions: {
+                    tabBarVisible: false // hide tabBar
+                },
+                lazy: true // only load screen that user is currently using
+            }
+        );
+        return (
+            <Provider store={store}>
+                <View style={styles.container}>
+                    <MainNavigator />
+                </View>
+            </Provider>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff'
+    }
 });
