@@ -5,15 +5,19 @@ import { Card, Button } from 'react-native-elements';
 class AddScreen extends Component {
     render() {
         return (
-            <View style={{ flex: 1 }}>
-                <Text>AddScreen</Text>
-                <Text>AddScreen</Text>
-                <Text>AddScreen</Text>
-                <Text>AddScreen</Text>
-                <Text>AddScreen</Text>
+            <View>
+                <View>
+                    <Text>AddScreen</Text>
+                    <Text>AddScreen</Text>
+                    <Text>AddScreen</Text>
+                    <Text>AddScreen</Text>
+                    <Text>AddScreen</Text>
+                </View>
+
                 <Button
                     title="Save"
                     onPress={() => {
+                        // call action
                         this.props.navigation.goBack();
                     }}
                 />

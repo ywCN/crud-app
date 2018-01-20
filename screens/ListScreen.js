@@ -15,11 +15,14 @@ class ListScreen extends Component {
 
                 <View style={{ flexDirection: 'row' }}>
                     <Button
+                        style={{ width: 100 }}
                         title="Edit"
-                        onPress={() => navigation.navigate('edit')}
+                        onPress={() => this.props.navigation.navigate('edit')}
                     />
                     <Button
+                        style={{ width: 100 }}
                         title="Delete"
+                        // call action
                         onPress={() => this.deleteItem(item.id)}
                     />
                 </View>
@@ -33,9 +36,7 @@ class ListScreen extends Component {
                 <ScrollView>{this.renderItems()}</ScrollView>
                 <Button
                     title="Add Item"
-                    onPress={() => {
-                        this.props.navigation.navigate('add');
-                    }}
+                    onPress={() => this.props.navigation.navigate('add')}
                 />
             </View>
         );
