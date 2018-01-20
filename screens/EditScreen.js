@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import { Card, Button } from 'react-native-elements';
 
 class EditScreen extends Component {
     render() {
@@ -10,6 +11,13 @@ class EditScreen extends Component {
                 <Text>EditScreen</Text>
                 <Text>EditScreen</Text>
                 <Text>EditScreen</Text>
+                <Button
+                    title="Save"
+                    onPress={() => {
+                        // call action
+                        this.props.navigation.goBack();
+                    }}
+                />
             </View>
         );
     }

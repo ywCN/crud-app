@@ -13,7 +13,6 @@ class AddScreen extends Component {
                     <Text>AddScreen</Text>
                     <Text>AddScreen</Text>
                 </View>
-
                 <Button
                     title="Save"
                     onPress={() => {
