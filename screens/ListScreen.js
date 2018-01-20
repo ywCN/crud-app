@@ -31,26 +31,15 @@ class ListScreen extends Component {
         return (
             <View style={{ flex: 1 }}>
                 <ScrollView>{this.renderItems()}</ScrollView>
-                <View style={styles.buttonContainer}>
-                    <Button
-                        title="Add Item"
-                        onPress={() => {
-                            this.props.navigation.navigate('add');
-                        }}
-                    />
-                </View>
+                <Button
+                    title="Add Item"
+                    onPress={() => {
+                        this.props.navigation.navigate('add');
+                    }}
+                />
             </View>
         );
     }
 }
-
-const styles = {
-    buttonContainer: {
-        position: 'absolute',
-        bottom: 20,
-        left: 0,
-        right: 0
-    }
-};
 
 export default ListScreen;
