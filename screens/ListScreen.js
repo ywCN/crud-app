@@ -11,36 +11,32 @@ class ListScreen extends Component {
     renderItems() {
         return (
             <Card key={item.id}>
-                <View>
-                    <View>
-                        <Text>{item.content}</Text>
-                    </View>
-                    {/* <View>
-                        <Button
-                            title="Edit"
-                            backgroundColor="#03A9F4"
-                            onPress={() => navigation.navigate('edit')}
-                        />
-                        <Button
-                            title="Delete"
-                            backgroundColor="#03A9F4"
-                            onPress={() => this.deleteItem(item.id)}
-                        />
-                    </View> */}
+                <Text>{item.content}</Text>
+
+                <View style={{ flexDirection: 'row' }}>
+                    <Button
+                        title="Edit"
+                        onPress={() => navigation.navigate('edit')}
+                    />
+                    <Button
+                        title="Delete"
+                        onPress={() => this.deleteItem(item.id)}
+                    />
                 </View>
             </Card>
         );
     }
+
     render() {
         return (
             <View style={{ flex: 1 }}>
                 <ScrollView>{this.renderItems()}</ScrollView>
                 <View style={styles.buttonContainer}>
                     <Button
-                        large
                         title="Add Item"
-                        backgroundColor="#009688"
-                        onPress={this.onButtonPress}
+                        onPress={() => {
+                            this.props.navigation.navigate('add');
+                        }}
                     />
                 </View>
             </View>
