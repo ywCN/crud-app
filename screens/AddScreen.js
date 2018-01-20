@@ -16,7 +16,7 @@ class AddScreen extends Component {
                 <Button
                     title="Save"
                     onPress={() => {
-                        // call action
+                        // call action to create this item in firebase
                         this.props.navigation.goBack();
                     }}
                 />

@@ -8,6 +8,9 @@ const item = {
 };
 
 class ListScreen extends Component {
+    componentWillMount() {
+        // call action to fetch updated list of item
+    }
     renderItems() {
         return (
             <Card key={item.id}>
@@ -22,7 +25,7 @@ class ListScreen extends Component {
                     <Button
                         style={{ width: 100 }}
                         title="Delete"
-                        // call action
+                        // call action to del item in firebase
                         onPress={() => this.deleteItem(item.id)}
                     />
                 </View>

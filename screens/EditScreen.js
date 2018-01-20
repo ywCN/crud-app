@@ -14,7 +14,7 @@ class EditScreen extends Component {
                 <Button
                     title="Save"
                     onPress={() => {
-                        // call action
+                        // call action to update this item in firebase
                         this.props.navigation.goBack();
                     }}
                 />
