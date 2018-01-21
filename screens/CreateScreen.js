@@ -3,7 +3,7 @@ import { View, Button, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 import { itemCreate } from '../actions';
 
-class AddScreen extends Component {
+class CreateScreen extends Component {
     state = { text: '' };
 
     render() {
@@ -26,4 +26,4 @@ class AddScreen extends Component {
     }
 }
 
-export default connect(null, { itemCreate })(AddScreen);
+export default connect(null, { itemCreate })(CreateScreen);

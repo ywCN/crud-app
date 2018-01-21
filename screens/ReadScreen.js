@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { View, Button, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
-import { setUpdateItem } from '../actions';
+import { setUpdateItem, itemsRead } from '../actions';
 
 const item = {
     uid: 1,
     content: 'mie'
 };
 
-class ListScreen extends Component {
+class ReadScreen extends Component {
     componentWillMount() {
-        // call action to fetch updated list of item
+        this.props.itemsRead();
     }
     renderItems() {
         // to do: map object from firebase into an array of views
@@ -40,4 +40,11 @@ class ListScreen extends Component {
     }
 }
 
-export default connect(null, { setUpdateItem })(ListScreen);
+function mapStateToProps(state) {
+    console.log(state);
+    return { items: state.readingItems };
+}
+
+export default connect(mapStateToProps, { setUpdateItem, itemsRead })(
+    ReadScreen
+);

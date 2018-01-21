@@ -5,8 +5,6 @@ import { CREATE, READ, UPDATE, SET_UPDATE_ITEM } from './types';
 const currentUserId = 'testing';
 
 export const itemsRead = () => {
-    const { currentUser } = firebase.auth();
-
     return dispatch => {
         firebase
             .database()
@@ -33,8 +31,6 @@ export const itemCreate = item => {
 
 // async
 export const itemUpdate = ({ item, uid }) => {
-    const { currentUser } = firebase.auth();
-
     return dispatch => {
         firebase
             .database()
@@ -48,8 +44,6 @@ export const itemUpdate = ({ item, uid }) => {
 };
 
 export const itemDelete = ({ uid }) => {
-    const { currentUser } = firebase.auth();
-
     return () => {
         firebase
             .database()
