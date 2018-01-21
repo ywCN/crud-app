@@ -4,30 +4,25 @@ import { View, Button, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { setUpdateItem, itemsRead } from '../actions';
 
-const item = {
-    uid: 1,
-    content: 'mie'
-};
-
 class ReadScreen extends Component {
     componentWillMount() {
         this.props.itemsRead();
     }
     renderItems() {
-        // to do: map object from firebase into an array of views
-        console.log(this.props.items);
-        _.map(this.props.items, (val, uid) => console.log(val, uid));
-        return (
-            <View key={item.id}>
-                <Button
-                    title={item.content}
-                    onPress={() => {
-                        this.props.setUpdateItem(item);
-                        this.props.navigation.navigate('edit');
-                    }}
-                />
-            </View>
-        );
+        _.map(this.props.items, (val, uid) => {
+            console.log(val.item, uid);
+            return (
+                <View key={uid}>
+                    <Button
+                        title={val.item}
+                        onPress={() => {
+                            this.props.setUpdateItem(uid, val);
+                            this.props.navigation.navigate('edit');
+                        }}
+                    />
+                </View>
+            );
+        });
     }
 
     render() {
