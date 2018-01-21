@@ -11,7 +11,6 @@ const item = {
 class ReadScreen extends Component {
     componentWillMount() {
         this.props.itemsRead();
-        console.log(this.props.items);
     }
     renderItems() {
         // to do: map object from firebase into an array of views
@@ -41,8 +40,8 @@ class ReadScreen extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return { items: state.readingItems };
+function mapStateToProps({ readingItems }) {
+    return { items: readingItems };
 }
 
 export default connect(mapStateToProps, { setUpdateItem, itemsRead })(
