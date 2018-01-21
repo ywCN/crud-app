@@ -11,31 +11,29 @@ class ReadScreen extends Component {
     renderItems() {
         _.map(this.props.items, (val, uid) => {
             console.log(val.item, uid);
-            // debugger;
-            return <Text>uid</Text>;
-            // return (
-            //     <View key={uid}>
-            //         <Button
-            //             title={val.item}
-            //             onPress={() => {
-            //                 this.props.setUpdateItem(uid, val);
-            //                 this.props.navigation.navigate('edit');
-            //             }}
-            //         />
-            //     </View>
-            // );
+            return (
+                <View key={uid}>
+                    <Button
+                        title={val.item}
+                        onPress={() => {
+                            this.props.setUpdateItem(uid, val);
+                            this.props.navigation.navigate('edit');
+                        }}
+                    />
+                </View>
+            );
         });
     }
 
     render() {
         return (
-            <ScrollView>
-                {this.renderItems()}
+            <View style={{ flex: 1 }}>
+                <View style={styles}>{this.renderItems()}</View>
                 <Button
                     title="Add Item"
                     onPress={() => this.props.navigation.navigate('create')}
                 />
-            </ScrollView>
+            </View>
         );
     }
 }
@@ -43,6 +41,14 @@ class ReadScreen extends Component {
 function mapStateToProps({ readingItems }) {
     return { items: readingItems };
 }
+
+styles = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0
+};
 
 export default connect(mapStateToProps, { setUpdateItem, itemsRead })(
     ReadScreen
