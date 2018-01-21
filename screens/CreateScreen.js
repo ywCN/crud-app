@@ -4,10 +4,8 @@ import { connect } from 'react-redux';
 import { itemCreate } from '../actions';
 
 class AddScreen extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { text: '' };
-    }
+    state = { text: '' };
+
     render() {
         return (
             <View>

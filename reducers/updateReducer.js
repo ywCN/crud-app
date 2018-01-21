@@ -1,4 +1,4 @@
-import { UPDATE } from '../actions/types';
+import { UPDATE, SET_UPDATE_ITEM } from '../actions/types';
 
 export default (state = '', action) => {
     switch (action.type) {

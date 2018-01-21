@@ -3,6 +3,7 @@ import { View, Button, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 
 class EditScreen extends Component {
+    state = { text: '' };
     render() {
         return (
             <View>
@@ -38,6 +39,10 @@ class EditScreen extends Component {
             </View>
         );
     }
+}
+
+function mapStateToProps(state) {
+    return { editingItem: state.updatingItem };
 }
 
 export default connect(mapStateToProps)(EditScreen);

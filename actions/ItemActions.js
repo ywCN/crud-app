@@ -4,17 +4,6 @@ import { CREATE, READ, UPDATE, SET_UPDATE_ITEM } from './types';
 
 const currentUserId = 'testing';
 
-export const itemCreate = item => {
-    return async dispatch => {
-        await firebase
-            .database()
-            .ref(`/users/${currentUserId}/items`)
-            .push({ item });
-        dispatch({ type: CREATE });
-        NavigationActions.navigate({ routeName: 'list' });
-    };
-};
-
 export const itemsRead = () => {
     const { currentUser } = firebase.auth();
 
@@ -28,6 +17,17 @@ export const itemsRead = () => {
                     payload: snapshot.val()
                 });
             });
+    };
+};
+
+export const itemCreate = item => {
+    return async dispatch => {
+        await firebase
+            .database()
+            .ref(`/users/${currentUserId}/items`)
+            .push({ item });
+        dispatch({ type: CREATE });
+        NavigationActions.navigate({ routeName: 'list' });
     };
 };
 
