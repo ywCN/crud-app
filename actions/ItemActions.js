@@ -1,7 +1,8 @@
 import firebase from 'firebase';
+import { NavigationActions } from 'react-navigation';
 import { CREATE, READ, UPDATE } from './types';
 
-const currentUserId = 'mSld03ZwZtYXTfpNzco3I7pjE5Z2';
+const currentUserId = 'testing';
 
 export const itemUpdate = ({ prop, value }) => {
     return {
@@ -11,17 +12,13 @@ export const itemUpdate = ({ prop, value }) => {
 };
 
 export const itemCreate = item => {
-    console.log(item);
-
-    return dispatch => {
-        firebase
+    return async dispatch => {
+        await firebase
             .database()
             .ref(`/users/${currentUserId}/items`)
-            .push({ item })
-            .then(() => {
-                dispatch({ type: CREATE });
-                // navigate back to list screen
-            });
+            .push({ item });
+        dispatch({ type: CREATE });
+        NavigationActions.navigate({ routeName: 'list' });
     };
 };
 

@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux';
-import itemReducer from './itemReducer';
+import editReducer from './itemReducer';
+import addReducer from './itemReducer';
+import readReducer from './itemReducer';
 
 export default combineReducers({
-    itemReducer
+    read: readReducer,
+    add: addReducer,
+    edit: editReducer
 });
