@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Button, TextInput } from 'react-native';
+import * as actions from '../actions';
 
 class AddScreen extends Component {
     constructor(props) {

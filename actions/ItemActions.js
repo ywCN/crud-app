@@ -40,7 +40,7 @@ export const itemsRead = () => {
 };
 
 // async
-export const itemUpdate = ({ item }) => {
+export const itemSave = ({ item }) => {
     const { currentUser } = firebase.auth();
 
     return dispatch => {
@@ -49,7 +49,8 @@ export const itemUpdate = ({ item }) => {
             .ref(`/users/${currentUser.uid}/items/${uid}`)
             .set({ item })
             .then(() => {
-                dispatch({ type: UPDATE });
+                // no need to dispatch here
+                // dispatch({ type: SAVE_SUCCESS });
                 // navigate back to list screen
             });
     };
@@ -65,7 +66,7 @@ export const itemDelete = ({ uid }) => {
             .remove()
             .then(() => {
                 // no need to dispatch here
-                // navigate back to list screen                
+                // navigate back to list screen
             });
     };
 };
