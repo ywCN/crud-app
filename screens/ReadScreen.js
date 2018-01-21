@@ -9,20 +9,32 @@ class ReadScreen extends Component {
         this.props.itemsRead();
     }
     renderItems() {
-        _.map(this.props.items, (val, uid) => {
-            console.log(val.item, uid);
-            return (
-                <View key={uid}>
-                    <Button
-                        title={val.item}
-                        onPress={() => {
-                            this.props.setUpdateItem(uid, val);
-                            this.props.navigation.navigate('edit');
-                        }}
-                    />
-                </View>
-            );
-        });
+        const uid = '-L3LFnxZ8SRXmvF49llb';
+        return (
+            <View key={this.props.items.uid}>
+                <Button
+                    title={this.props.items.uid.item}
+                    onPress={() => {
+                        this.props.setUpdateItem(uid, val);
+                        this.props.navigation.navigate('edit');
+                    }}
+                />
+            </View>
+        );
+        // _.map(this.props.items, (val, uid) => {
+        //     console.log(val.item, uid);
+        //     return (
+        //         <View key={uid}>
+        //             <Button
+        //                 title={val.item}
+        //                 onPress={() => {
+        //                     this.props.setUpdateItem(uid, val);
+        //                     this.props.navigation.navigate('edit');
+        //                 }}
+        //             />
+        //         </View>
+        //     );
+        // });
     }
 
     render() {
