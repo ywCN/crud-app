@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { Text, View, Button, ScrollView } from 'react-native';
+import { View, Button, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { setUpdateItem, itemsRead } from '../actions';
 
@@ -28,7 +28,9 @@ class ReadScreen extends Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <View style={styles}>{this.renderItems()}</View>
+                <ScrollView style={{ borderWidth: 1 }}>
+                    {this.renderItems()}
+                </ScrollView>
                 <Button
                     title="Add Item"
                     onPress={() => this.props.navigation.navigate('create')}
@@ -41,14 +43,6 @@ class ReadScreen extends Component {
 function mapStateToProps({ readingItems }) {
     return { items: readingItems };
 }
-
-styles = {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0
-};
 
 export default connect(mapStateToProps, { setUpdateItem, itemsRead })(
     ReadScreen
