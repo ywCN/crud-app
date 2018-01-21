@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Button, TextInput } from 'react-native';
 import { connect } from 'react-redux';
-import { updateItem } from '../actions';
+import { updateItem, deleteItem } from '../actions';
 
 class EditScreen extends Component {
     componentWillMount() {
@@ -9,6 +9,8 @@ class EditScreen extends Component {
         this.setState({ text: this.props.editingItem.item });
     }
     render() {
+        const { uid } = this.props.editingItem;
+
         return (
             <View>
                 <TextInput
@@ -27,20 +29,17 @@ class EditScreen extends Component {
                     <Button
                         title="Save"
                         onPress={() => {
-                            this.props.updateItem(
-                                this.state.text,
-                                this.props.editingItem.uid,
-                                () => {
-                                    this.props.navigation.goBack();
-                                }
-                            );
+                            this.props.updateItem(this.state.text, uid, () => {
+                                this.props.navigation.goBack();
+                            });
                         }}
                     />
                     <Button
                         title="Delete"
                         onPress={() => {
-                            // call action to update this item in firebase
-                            this.props.navigation.goBack();
+                            this.props.deleteItem(uid, () => {
+                                this.props.navigation.goBack();
+                            });
                         }}
                     />
                 </View>
@@ -53,4 +52,4 @@ function mapStateToProps(state) {
     return { editingItem: state.updatingItem };
 }
 
-export default connect(mapStateToProps, { updateItem })(EditScreen);
+export default connect(mapStateToProps, { updateItem, deleteItem })(EditScreen);

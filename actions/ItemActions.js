@@ -44,14 +44,14 @@ export const updateItem = (item, uid, callback) => {
     };
 };
 
-export const deleteItem = ({ uid }) => {
+export const deleteItem = (uid, callback) => {
     return () => {
         firebase
             .database()
             .ref(`/users/${currentUserId}/employees/${uid}`)
             .remove()
             .then(() => {
-                NavigationActions.navigate({ routeName: 'list' });
+                callback();
             });
     };
 };
