@@ -2,11 +2,11 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { View, Button, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
-import { setUpdateItem, itemsRead } from '../actions';
+import { setUpdateItem, readItems } from '../actions';
 
 class ReadScreen extends Component {
     componentWillMount() {
-        this.props.itemsRead();
+        this.props.readItems();
     }
     renderItems() {
         return _.map(this.props.items, (val, uid) => {
@@ -45,6 +45,6 @@ function mapStateToProps({ readingItems }) {
     return { items: readingItems };
 }
 
-export default connect(mapStateToProps, { setUpdateItem, itemsRead })(
+export default connect(mapStateToProps, { setUpdateItem, readItems })(
     ReadScreen
 );

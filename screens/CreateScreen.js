@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Button, TextInput } from 'react-native';
 import { connect } from 'react-redux';
-import { itemCreate } from '../actions';
+import { createItem } from '../actions';
 
 class CreateScreen extends Component {
     state = { text: '' };
@@ -18,7 +18,7 @@ class CreateScreen extends Component {
                 <Button
                     title="Save"
                     onPress={() => {
-                        this.props.itemCreate(this.state.text);
+                        this.props.createItem(this.state.text);
                     }}
                 />
             </View>
@@ -26,4 +26,4 @@ class CreateScreen extends Component {
     }
 }
 
-export default connect(null, { itemCreate })(CreateScreen);
+export default connect(null, { createItem })(CreateScreen);

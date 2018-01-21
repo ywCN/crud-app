@@ -39,7 +39,6 @@ export const updateItem = ({ item, uid }) => {
             .set({ item })
             .then(() => {
                 dispatch({ type: UPDATE });
-                NavigationActions.navigate({ screen: 'list' });
             });
     };
 };
@@ -57,7 +56,9 @@ export const deleteItem = ({ uid }) => {
 };
 
 // current editing item in redux store
-export const setUpdateItem = (uid, item) => {
+export const setUpdateItem = (uid, item, callback) => {
+    callback();
+    console.log('after callback');
     return {
         type: SET_UPDATE_ITEM,
         payload: { uid, item }

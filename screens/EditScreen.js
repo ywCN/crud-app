@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Button, TextInput } from 'react-native';
 import { connect } from 'react-redux';
-import { itemUpdate } from '../actions';
+import { updateItem } from '../actions';
 
 class EditScreen extends Component {
     componentWillMount() {
@@ -49,4 +49,4 @@ function mapStateToProps(state) {
     return { editingItem: state.updatingItem };
 }
 
-export default connect(mapStateToProps, { itemUpdate })(EditScreen);
+export default connect(mapStateToProps, { updateItem })(EditScreen);
