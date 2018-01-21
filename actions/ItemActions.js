@@ -48,7 +48,7 @@ export const deleteItem = (uid, callback) => {
     return () => {
         firebase
             .database()
-            .ref(`/users/${currentUserId}/employees/${uid}`)
+            .ref(`/users/${currentUserId}/items/${uid}`)
             .remove()
             .then(() => {
                 callback();
