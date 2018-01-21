@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { View, Button, ScrollView } from 'react-native';
+import { connect } from 'react-redux';
+import { setUpdateItem } from '../actions';
 
 const item = {
-    id: 1,
+    uid: 1,
     content: 'mie'
 };
 
@@ -17,8 +19,8 @@ class ListScreen extends Component {
                 <Button
                     title={item.content}
                     onPress={() => {
-                        this.props.navigation.navigate('edit');
-                        // call action creator to set current editing item
+                        this.props.setUpdateItem(item);
+                        // this.props.navigation.navigate('edit');
                     }}
                 />
             </View>
@@ -38,4 +40,4 @@ class ListScreen extends Component {
     }
 }
 
-export default ListScreen;
+export default connect(null, { setUpdateItem })(ListScreen);

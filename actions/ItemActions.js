@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 import { NavigationActions } from 'react-navigation';
-import { CREATE, READ, UPDATE } from './types';
+import { CREATE, READ, UPDATE, SET_UPDATE_ITEM } from './types';
 
 const currentUserId = 'testing';
 
@@ -32,7 +32,7 @@ export const itemsRead = () => {
 };
 
 // async
-export const itemUpdate = ({ item }) => {
+export const itemUpdate = ({ item, uid }) => {
     const { currentUser } = firebase.auth();
 
     return dispatch => {
@@ -41,9 +41,8 @@ export const itemUpdate = ({ item }) => {
             .ref(`/users/${currentUserId}/items/${uid}`)
             .set({ item })
             .then(() => {
-                // no need to dispatch here
-                // dispatch({ type: SAVE_SUCCESS });
-                // navigate back to list screen
+                dispatch({ type: UPDATE });
+                NavigationActions.navigate({ routeName: 'list' });
             });
     };
 };
@@ -57,8 +56,16 @@ export const itemDelete = ({ uid }) => {
             .ref(`/users/${currentUserId}/employees/${uid}`)
             .remove()
             .then(() => {
-                // no need to dispatch here
-                // navigate back to list screen
+                NavigationActions.navigate({ routeName: 'list' });
             });
+    };
+};
+
+export const setUpdateItem = item => {
+    console.log(item);
+    NavigationActions.navigate({ routeName: 'edit' });
+    return {
+        type: SET_UPDATE_ITEM,
+        payload: { item }
     };
 };
