@@ -5,6 +5,7 @@ import { itemUpdate } from '../actions';
 
 class EditScreen extends Component {
     componentWillMount() {
+        // console.log(this.props.editingItem);
         this.setState({ text: this.props.editingItem.item });
     }
     render() {
@@ -45,7 +46,6 @@ class EditScreen extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state.updatingItem);
     return { editingItem: state.updatingItem };
 }
 

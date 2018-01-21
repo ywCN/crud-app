@@ -1,10 +1,9 @@
 import firebase from 'firebase';
-import { NavigationActions } from 'react-navigation';
 import { CREATE, READ, UPDATE, SET_UPDATE_ITEM } from './types';
 
 const currentUserId = 'testing';
 
-export const itemsRead = () => {
+export const readItems = () => {
     return dispatch => {
         firebase
             .database()
@@ -19,18 +18,20 @@ export const itemsRead = () => {
     };
 };
 
-export const itemCreate = item => {
+export const createItem = item => {
     return async dispatch => {
         await firebase
             .database()
             .ref(`/users/${currentUserId}/items`)
-            .push({ item });
-        dispatch({ type: CREATE });
-        NavigationActions.navigate({ routeName: 'list' });
+            .push({ item })
+            .then(() => {
+                dispatch({ type: CREATE });
+                // navigate to list?
+            });
     };
 };
 
-export const itemUpdate = ({ item, uid }) => {
+export const updateItem = ({ item, uid }) => {
     return dispatch => {
         firebase
             .database()
@@ -43,7 +44,7 @@ export const itemUpdate = ({ item, uid }) => {
     };
 };
 
-export const itemDelete = ({ uid }) => {
+export const deleteItem = ({ uid }) => {
     return () => {
         firebase
             .database()
@@ -55,6 +56,7 @@ export const itemDelete = ({ uid }) => {
     };
 };
 
+// current editing item in redux store
 export const setUpdateItem = (uid, item) => {
     return {
         type: SET_UPDATE_ITEM,

@@ -16,8 +16,9 @@ class ReadScreen extends Component {
                     <Button
                         title={val.item}
                         onPress={() => {
-                            this.props.setUpdateItem(uid, val.item);
-                            this.props.navigation.navigate('edit');
+                            this.props.setUpdateItem(uid, val.item, () => {
+                                this.props.navigation.navigate('edit');
+                            });
                         }}
                     />
                 </View>
