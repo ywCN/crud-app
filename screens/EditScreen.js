@@ -5,7 +5,7 @@ import { updateItem } from '../actions';
 
 class EditScreen extends Component {
     componentWillMount() {
-        // console.log(this.props.editingItem);
+        console.log(this.props.editingItem);
         this.setState({ text: this.props.editingItem.item });
     }
     render() {
@@ -27,9 +27,13 @@ class EditScreen extends Component {
                     <Button
                         title="Save"
                         onPress={() => {
-                            // call action to update this item in firebase
-                            // then navigate back, 2nd argument?
-                            this.props.navigation.goBack();
+                            this.props.updateItem(
+                                this.state.text,
+                                this.props.editingItem.uid,
+                                () => {
+                                    this.props.navigation.goBack();
+                                }
+                            );
                         }}
                     />
                     <Button

@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 import { CREATE, READ, UPDATE, SET_UPDATE_ITEM } from './types';
 
-const currentUserId = 'testing';
+const currentUserId = 'testing'; // firebase access setting is public
 
 export const readItems = () => {
     return dispatch => {
@@ -26,12 +26,12 @@ export const createItem = (item, callback) => {
             .push({ item })
             .then(() => {
                 dispatch({ type: CREATE });
-                callback();
+                callback(); // go back
             });
     };
 };
 
-export const updateItem = ({ item, uid }) => {
+export const updateItem = (item, uid, callback) => {
     return dispatch => {
         firebase
             .database()
@@ -39,6 +39,7 @@ export const updateItem = ({ item, uid }) => {
             .set({ item })
             .then(() => {
                 dispatch({ type: UPDATE });
+                callback(); // go back
             });
     };
 };
