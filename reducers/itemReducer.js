@@ -3,7 +3,8 @@ import { CREATE, READ, UPDATE } from '../actions/types';
 export default (state = '', action) => {
     switch (action.type) {
         case CREATE:
-            return INITIAL_STATE;
+            // reset AddScreen input
+            return state;
         case READ:
             return action.payload;
         case UPDATE:

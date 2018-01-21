@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Button, TextInput } from 'react-native';
-import * as actions from '../actions';
+import { connect } from 'react-redux';
+import { itemCreate } from '../actions';
 
 class AddScreen extends Component {
     constructor(props) {
@@ -19,8 +20,7 @@ class AddScreen extends Component {
                 <Button
                     title="Save"
                     onPress={() => {
-                        // call action to create this item in firebase
-                        this.props.navigation.goBack();
+                        this.props.itemCreate(this.state.text);
                     }}
                 />
             </View>
@@ -28,4 +28,4 @@ class AddScreen extends Component {
     }
 }
 
-export default AddScreen;
+export default connect(null, { itemCreate })(AddScreen);

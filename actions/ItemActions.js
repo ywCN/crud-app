@@ -1,6 +1,8 @@
 import firebase from 'firebase';
 import { CREATE, READ, UPDATE } from './types';
 
+const currentUserId = 'mSld03ZwZtYXTfpNzco3I7pjE5Z2';
+
 export const itemUpdate = ({ prop, value }) => {
     return {
         type: EMPLOYEE_UPDATE,
@@ -8,13 +10,13 @@ export const itemUpdate = ({ prop, value }) => {
     };
 };
 
-export const itemCreate = ({ item }) => {
-    const { currentUser } = firebase.auth();
+export const itemCreate = item => {
+    console.log(item);
 
     return dispatch => {
         firebase
             .database()
-            .ref(`/users/${currentUser.uid}/items`)
+            .ref(`/users/${currentUserId}/items`)
             .push({ item })
             .then(() => {
                 dispatch({ type: CREATE });
@@ -29,7 +31,7 @@ export const itemsRead = () => {
     return dispatch => {
         firebase
             .database()
-            .ref(`/users/${currentUser.uid}/items`)
+            .ref(`/users/${currentUserId}/items`)
             .on('value', snapshot => {
                 dispatch({
                     type: READ,
@@ -46,7 +48,7 @@ export const itemSave = ({ item }) => {
     return dispatch => {
         firebase
             .database()
-            .ref(`/users/${currentUser.uid}/items/${uid}`)
+            .ref(`/users/${currentUserId}/items/${uid}`)
             .set({ item })
             .then(() => {
                 // no need to dispatch here
@@ -62,7 +64,7 @@ export const itemDelete = ({ uid }) => {
     return () => {
         firebase
             .database()
-            .ref(`/users/${currentUser.uid}/employees/${uid}`)
+            .ref(`/users/${currentUserId}/employees/${uid}`)
             .remove()
             .then(() => {
                 // no need to dispatch here
