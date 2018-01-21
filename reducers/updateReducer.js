@@ -3,7 +3,10 @@ import { UPDATE } from '../actions/types';
 export default (state = '', action) => {
     switch (action.type) {
         case UPDATE:
-            return { ...state, [action.payload.prop]: action.payload.value };
+            return '';
+        case SET_UPDATE_ITEM:
+            console.log(action);
+            return action.payload;
         default:
             return state;
     }

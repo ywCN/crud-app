@@ -7,10 +7,9 @@ import thunk from 'redux-thunk';
 import firebase from 'firebase';
 
 import reducers from './reducers';
-import AddScreen from './screens/AddScreen';
+import CreateScreen from './screens/CreateScreen';
 import EditScreen from './screens/EditScreen';
-import ListScreen from './screens/ListScreen';
-import ViewScreen from './screens/ViewScreen';
+import ReadScreen from './screens/ReadScreen';
 
 export default class App extends React.Component {
     componentWillMount() {
