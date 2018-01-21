@@ -19,6 +19,10 @@ export const readItems = () => {
 };
 
 export const createItem = (item, callback) => {
+    if (item === '') {
+        callback(); // go back
+        return { type: '' }; // trigger default action type
+    }
     return dispatch => {
         firebase
             .database()
