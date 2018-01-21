@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { View, Button, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
@@ -14,6 +15,8 @@ class ReadScreen extends Component {
     }
     renderItems() {
         // to do: map object from firebase into an array of views
+        console.log(this.props.items);
+        _.map(this.props.items, (val, uid) => console.log(val, uid));
         return (
             <View key={item.id}>
                 <Button
