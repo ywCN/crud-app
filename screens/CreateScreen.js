@@ -18,7 +18,9 @@ class CreateScreen extends Component {
                 <Button
                     title="Save"
                     onPress={() => {
-                        this.props.createItem(this.state.text);
+                        this.props.createItem(this.state.text, () => {
+                            this.props.navigation.goBack();
+                        });
                     }}
                 />
             </View>

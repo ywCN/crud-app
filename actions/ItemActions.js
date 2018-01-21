@@ -18,15 +18,15 @@ export const readItems = () => {
     };
 };
 
-export const createItem = item => {
-    return async dispatch => {
-        await firebase
+export const createItem = (item, callback) => {
+    return dispatch => {
+        firebase
             .database()
             .ref(`/users/${currentUserId}/items`)
             .push({ item })
             .then(() => {
                 dispatch({ type: CREATE });
-                // navigate to list?
+                callback();
             });
     };
 };
@@ -57,8 +57,7 @@ export const deleteItem = ({ uid }) => {
 
 // current editing item in redux store
 export const setUpdateItem = (uid, item, callback) => {
-    callback();
-    console.log('after callback');
+    callback(); // go to edit screen
     return {
         type: SET_UPDATE_ITEM,
         payload: { uid, item }
