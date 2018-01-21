@@ -10,6 +10,7 @@ export const itemsRead = () => {
             .database()
             .ref(`/users/${currentUserId}/items`)
             .on('value', snapshot => {
+                // console.log(snapshot.val());
                 dispatch({
                     type: READ,
                     payload: snapshot.val()
