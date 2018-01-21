@@ -1,15 +1,13 @@
-import { CREATE, READ, UPDATE, DELETE } from '../actions/types';
+import { CREATE, READ, UPDATE } from '../actions/types';
 
-export default (state = null, action) => {
+export default (state = '', action) => {
     switch (action.type) {
         case CREATE:
-            return state;
+            return INITIAL_STATE;
         case READ:
-            return state;
+            return action.payload;
         case UPDATE:
-            return state;
-        case DELETE:
-            return state;
+            return { ...state, [action.payload.prop]: action.payload.value };
         default:
             return state;
     }
