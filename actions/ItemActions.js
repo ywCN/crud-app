@@ -4,13 +4,6 @@ import { CREATE, READ, UPDATE } from './types';
 
 const currentUserId = 'testing';
 
-export const itemUpdate = ({ prop, value }) => {
-    return {
-        type: EMPLOYEE_UPDATE,
-        payload: { prop, value }
-    };
-};
-
 export const itemCreate = item => {
     return async dispatch => {
         await firebase
@@ -39,7 +32,7 @@ export const itemsRead = () => {
 };
 
 // async
-export const itemSave = ({ item }) => {
+export const itemUpdate = ({ item }) => {
     const { currentUser } = firebase.auth();
 
     return dispatch => {
