@@ -29,14 +29,13 @@ class ReadScreen extends Component {
 
     render() {
         return (
-            <View style={{ flex: 1 }}>
-                <Text>a</Text>
-                <ScrollView>{this.renderItems()}</ScrollView>
+            <ScrollView>
+                {this.renderItems()}
                 <Button
                     title="Add Item"
                     onPress={() => this.props.navigation.navigate('create')}
                 />
-            </View>
+            </ScrollView>
         );
     }
 }
