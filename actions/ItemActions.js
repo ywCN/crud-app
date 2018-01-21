@@ -30,7 +30,6 @@ export const itemCreate = item => {
     };
 };
 
-// async
 export const itemUpdate = ({ item, uid }) => {
     return dispatch => {
         firebase
@@ -39,7 +38,7 @@ export const itemUpdate = ({ item, uid }) => {
             .set({ item })
             .then(() => {
                 dispatch({ type: UPDATE });
-                NavigationActions.navigate({ routeName: 'list' });
+                NavigationActions.navigate({ screen: 'list' });
             });
     };
 };
@@ -57,8 +56,6 @@ export const itemDelete = ({ uid }) => {
 };
 
 export const setUpdateItem = item => {
-    console.log(item);
-    NavigationActions.navigate({ routeName: 'edit' });
     return {
         type: SET_UPDATE_ITEM,
         payload: { item }

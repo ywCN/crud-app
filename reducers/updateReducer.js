@@ -5,7 +5,6 @@ export default (state = '', action) => {
         case UPDATE:
             return '';
         case SET_UPDATE_ITEM:
-            console.log(action);
             return action.payload;
         default:
             return state;
