@@ -31,7 +31,7 @@ class ListScreen extends Component {
                 <ScrollView>{this.renderItems()}</ScrollView>
                 <Button
                     title="Add Item"
-                    onPress={() => this.props.navigation.navigate('add')}
+                    onPress={() => this.props.navigation.navigate('create')}
                 />
             </View>
         );

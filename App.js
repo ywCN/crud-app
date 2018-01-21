@@ -29,9 +29,8 @@ export default class App extends React.Component {
         const store = createStore(reducers, {}, applyMiddleware(thunk));
         const MainNavigator = StackNavigator(
             {
-                list: { screen: ListScreen },
-                add: { screen: AddScreen },
-                view: { screen: ViewScreen },
+                read: { screen: ReadScreen },
+                create: { screen: CreateScreen },
                 edit: { screen: EditScreen }
             }
             // {

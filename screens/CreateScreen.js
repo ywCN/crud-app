@@ -28,10 +28,4 @@ class AddScreen extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    console.log(state);
-    const { item } = state.itemReducer;
-    return { item };
-}
-
-export default connect(mapStateToProps, { itemCreate })(AddScreen);
+export default connect(null, { itemCreate })(AddScreen);

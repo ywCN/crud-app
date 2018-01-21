@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { View, Button, TextInput } from 'react-native';
+import { connect } from 'react-redux';
 
 class EditScreen extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { text: 'Useless Placeholder' };
-    }
     render() {
         return (
             <View>
@@ -43,4 +40,4 @@ class EditScreen extends Component {
     }
 }
 
-export default EditScreen;
+export default connect(mapStateToProps)(EditScreen);
