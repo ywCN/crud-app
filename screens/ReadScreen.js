@@ -9,7 +9,7 @@ class ReadScreen extends Component {
         this.props.itemsRead();
     }
     renderItems() {
-        _.map(this.props.items, (val, uid) => {
+        return _.map(this.props.items, (val, uid) => {
             console.log(val.item, uid);
             return (
                 <View key={uid}>
