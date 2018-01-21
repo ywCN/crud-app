@@ -55,9 +55,9 @@ export const itemDelete = ({ uid }) => {
     };
 };
 
-export const setUpdateItem = item => {
+export const setUpdateItem = (uid, item) => {
     return {
         type: SET_UPDATE_ITEM,
-        payload: { item }
+        payload: { uid, item }
     };
 };

@@ -10,13 +10,13 @@ class ReadScreen extends Component {
     }
     renderItems() {
         return _.map(this.props.items, (val, uid) => {
-            console.log(val.item, uid);
+            // console.log(val.item, uid);
             return (
                 <View key={uid}>
                     <Button
                         title={val.item}
                         onPress={() => {
-                            this.props.setUpdateItem(uid, val);
+                            this.props.setUpdateItem(uid, val.item);
                             this.props.navigation.navigate('edit');
                         }}
                     />

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { View, Button, TextInput } from 'react-native';
 import { connect } from 'react-redux';
+import { itemUpdate } from '../actions';
 
 class EditScreen extends Component {
-    state = { text: '' };
+    componentWillMount() {
+        this.setState({ text: this.props.editingItem.item });
+    }
     render() {
         return (
             <View>
@@ -42,7 +45,8 @@ class EditScreen extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log(state.updatingItem);
     return { editingItem: state.updatingItem };
 }
 
-export default connect(mapStateToProps)(EditScreen);
+export default connect(mapStateToProps, { itemUpdate })(EditScreen);
